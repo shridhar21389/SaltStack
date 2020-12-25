@@ -238,6 +238,17 @@
                         "FromPort" : 3389,
                         "ToPort" : 3389,
                         "CidrIp" : { "Ref" : "UserPublicIPforBastionAccess" }
+                    },
+                    {
+                        "IpProtocol" : "-1",
+                        "FromPort" : 0,
+                        "ToPort" : 65536,
+                        "CidrIp": {
+                           "Fn::GetAtt": [
+                              "VPC",
+                              "CidrBlock"
+                           ]
+                        }
                     }
                 ],
                 "Tags" : [
